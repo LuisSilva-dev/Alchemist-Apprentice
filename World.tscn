@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://c32l1v5euonr1"]
+
+[ext_resource type="Texture2D" uid="uid://b6rrxpurggrik" path="res://Sprites/Background.jpg" id="1_306rc"]
+[ext_resource type="Script" path="res://World.gd" id="1_jxxjf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfnvx"]
+size = Vector2(155, 111.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86hcn"]
+size = Vector2(161, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsb7m"]
+size = Vector2(284, 178.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjfhd"]
+size = Vector2(182, 52)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_jxxjf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.915867, 0.636699)
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.249135, 0.186851)
+texture = ExtResource("1_306rc")
+
+[node name="IngredientBox" type="Area2D" parent="."]
+position = Vector2(1062, 288)
+
+[node name="Collision" type="CollisionShape2D" parent="IngredientBox"]
+light_mask = 2
+visibility_layer = 2
+shape = SubResource("RectangleShape2D_mfnvx")
+
+[node name="PotionBox" type="Area2D" parent="."]
+position = Vector2(858, 292)
+
+[node name="Collision" type="CollisionShape2D" parent="PotionBox"]
+shape = SubResource("RectangleShape2D_86hcn")
+
+[node name="Alchemist_Setup" type="Area2D" parent="."]
+position = Vector2(205, 284)
+
+[node name="Collision" type="CollisionShape2D" parent="Alchemist_Setup"]
+shape = SubResource("RectangleShape2D_qsb7m")
+
+[node name="OpenSign" type="Area2D" parent="."]
+position = Vector2(568, 87)
+
+[node name="Collision" type="CollisionShape2D" parent="OpenSign"]
+shape = SubResource("RectangleShape2D_bjfhd")
+
+[node name="Sign" type="Label" parent="OpenSign"]
+offset_left = -91.0
+offset_top = -26.0
+offset_right = 91.0
+offset_bottom = 22.0
+
+[connection signal="input_event" from="IngredientBox" to="." method="_ingredient_box_clicked"]
+[connection signal="input_event" from="PotionBox" to="." method="_potion_box_clicked"]
+[connection signal="input_event" from="Alchemist_Setup" to="." method="_alchemist_setup_clicked"]
