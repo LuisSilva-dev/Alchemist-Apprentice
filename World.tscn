@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c32l1v5euonr1"]
+[gd_scene load_steps=15 format=3 uid="uid://c32l1v5euonr1"]
 
-[ext_resource type="Texture2D" uid="uid://b6rrxpurggrik" path="res://Sprites/Background.jpg" id="1_306rc"]
 [ext_resource type="Script" path="res://World.gd" id="1_jxxjf"]
+[ext_resource type="Texture2D" uid="uid://o31v4lngu2d8" path="res://Sprites/Background.png" id="2_gluxr"]
+[ext_resource type="Texture2D" uid="uid://8ypyic7gqm1s" path="res://Sprites/talkBubble.png" id="3_vd43d"]
+[ext_resource type="Texture2D" uid="uid://d21jwwcfikpr1" path="res://Sprites/HandBook.png" id="4_2ff4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfnvx"]
 size = Vector2(155, 111.5)
@@ -15,17 +17,29 @@ size = Vector2(284, 178.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjfhd"]
 size = Vector2(182, 52)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kunti"]
+size = Vector2(1006.07, 493.6)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3sfb7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xk35"]
+size = Vector2(911.44, 454.113)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ehpl"]
+size = Vector2(915.423, 395.257)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwec2"]
+size = Vector2(985.075, 438.736)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2dkf"]
+size = Vector2(1242.53, 1550)
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_jxxjf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 scale = Vector2(0.915867, 0.636699)
-
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-scale = Vector2(0.249135, 0.186851)
-texture = ExtResource("1_306rc")
 
 [node name="IngredientBox" type="Area2D" parent="."]
 position = Vector2(1062, 288)
@@ -54,11 +68,80 @@ position = Vector2(568, 87)
 shape = SubResource("RectangleShape2D_bjfhd")
 
 [node name="Sign" type="Label" parent="OpenSign"]
+texture_filter = 1
 offset_left = -91.0
-offset_top = -26.0
+offset_top = -30.0
 offset_right = 91.0
-offset_bottom = 22.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 36
+text = "Closed"
+horizontal_alignment = 1
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.249135, 0.186851)
+texture = ExtResource("2_gluxr")
+
+[node name="TalkBubble" type="Area2D" parent="."]
+position = Vector2(152, 522)
+scale = Vector2(0.200781, 0.253241)
+
+[node name="Collision" type="CollisionShape2D" parent="TalkBubble"]
+shape = SubResource("RectangleShape2D_kunti")
+
+[node name="TalkBubble" type="Sprite2D" parent="TalkBubble"]
+material = SubResource("CanvasItemMaterial_3sfb7")
+texture = ExtResource("3_vd43d")
+
+[node name="TalkBubble2" type="Area2D" parent="."]
+position = Vector2(370, 524)
+scale = Vector2(0.200781, 0.253241)
+
+[node name="Collision" type="CollisionShape2D" parent="TalkBubble2"]
+shape = SubResource("RectangleShape2D_1xk35")
+
+[node name="TalkBubble2" type="Sprite2D" parent="TalkBubble2"]
+material = SubResource("CanvasItemMaterial_3sfb7")
+texture = ExtResource("3_vd43d")
+
+[node name="TalkBubble3" type="Area2D" parent="."]
+position = Vector2(818, 519)
+scale = Vector2(0.201, 0.253)
+
+[node name="Collision" type="CollisionShape2D" parent="TalkBubble3"]
+shape = SubResource("RectangleShape2D_7ehpl")
+
+[node name="TalkBubble3" type="Sprite2D" parent="TalkBubble3"]
+material = SubResource("CanvasItemMaterial_3sfb7")
+texture = ExtResource("3_vd43d")
+flip_h = true
+
+[node name="TalkBubble4" type="Area2D" parent="."]
+position = Vector2(1016.96, 512.62)
+scale = Vector2(0.201, 0.253)
+
+[node name="Collision" type="CollisionShape2D" parent="TalkBubble4"]
+shape = SubResource("RectangleShape2D_gwec2")
+
+[node name="TalkBubble4" type="Sprite2D" parent="TalkBubble4"]
+material = SubResource("CanvasItemMaterial_3sfb7")
+texture = ExtResource("3_vd43d")
+flip_h = true
+
+[node name="HandBook" type="Area2D" parent="."]
+position = Vector2(599, 493)
+rotation = 0.2123
+scale = Vector2(0.073178, 0.0761606)
+
+[node name="Collision" type="CollisionShape2D" parent="HandBook"]
+position = Vector2(167.902, -61.6372)
+shape = SubResource("RectangleShape2D_f2dkf")
+
+[node name="HandBook" type="Sprite2D" parent="HandBook"]
+texture = ExtResource("4_2ff4p")
 
 [connection signal="input_event" from="IngredientBox" to="." method="_ingredient_box_clicked"]
 [connection signal="input_event" from="PotionBox" to="." method="_potion_box_clicked"]
 [connection signal="input_event" from="Alchemist_Setup" to="." method="_alchemist_setup_clicked"]
+[connection signal="input_event" from="OpenSign" to="." method="_open_sign_clicked"]
+[connection signal="input_event" from="HandBook" to="." method="_hand_book_clicked"]
