@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c32l1v5euonr1"]
+[gd_scene load_steps=17 format=3 uid="uid://c32l1v5euonr1"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_jxxjf"]
 [ext_resource type="Texture2D" uid="uid://o31v4lngu2d8" path="res://Sprites/Background.png" id="2_gluxr"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://8ypyic7gqm1s" path="res://Sprites/talkBubble.png" id="3_vd43d"]
 [ext_resource type="Texture2D" uid="uid://d21jwwcfikpr1" path="res://Sprites/HandBook.png" id="4_2ff4p"]
 [ext_resource type="Script" path="res://TalkBubble.gd" id="5_ehogi"]
-[ext_resource type="Texture2D" uid="uid://cfnvy3npalu0o" path="res://Sprites/HumanFace.png" id="7_01653"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfnvx"]
 size = Vector2(155, 111.5)
@@ -23,6 +22,11 @@ size = Vector2(182, 52)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2dkf"]
 size = Vector2(1242.53, 1550)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3sfb7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kunti"]
+size = Vector2(1006.07, 493.6)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xk35"]
 size = Vector2(911.44, 454.113)
 
@@ -31,11 +35,6 @@ size = Vector2(915.423, 395.257)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwec2"]
 size = Vector2(985.075, 438.736)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kunti"]
-size = Vector2(1006.07, 493.6)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3sfb7"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_jxxjf")
@@ -100,113 +99,24 @@ texture = ExtResource("4_2ff4p")
 
 [node name="TalkBubbleAll" type="Area2D" parent="."]
 
-[node name="Collision2" type="CollisionShape2D" parent="TalkBubbleAll"]
-position = Vector2(370, 524)
-scale = Vector2(0.200781, 0.253241)
-shape = SubResource("RectangleShape2D_1xk35")
-
-[node name="Collision3" type="CollisionShape2D" parent="TalkBubbleAll"]
-position = Vector2(818, 519)
-scale = Vector2(0.201, 0.253)
-shape = SubResource("RectangleShape2D_7ehpl")
-
-[node name="Collision4" type="CollisionShape2D" parent="TalkBubbleAll"]
-position = Vector2(1016.96, 512.62)
-scale = Vector2(0.201, 0.253)
-shape = SubResource("RectangleShape2D_gwec2")
-
-[node name="Collision1" type="CollisionShape2D" parent="TalkBubbleAll"]
-position = Vector2(152, 522)
-scale = Vector2(0.200781, 0.253241)
-shape = SubResource("RectangleShape2D_kunti")
-
 [node name="TalkBubble1" type="Sprite2D" parent="TalkBubbleAll"]
 material = SubResource("CanvasItemMaterial_3sfb7")
 position = Vector2(152, 522)
 scale = Vector2(0.200781, 0.253241)
 texture = ExtResource("3_vd43d")
-script = ExtResource("5_ehogi")
-
-[node name="Dialog" type="Label" parent="TalkBubbleAll/TalkBubble1"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1299.0
-offset_top = -650.437
-offset_right = -556.0
-offset_bottom = -429.437
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 70
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Human" type="Sprite2D" parent="TalkBubbleAll/TalkBubble1"]
-visible = false
-position = Vector2(154.397, -146.106)
-scale = Vector2(0.119974, 0.11883)
-texture = ExtResource("7_01653")
 
 [node name="TalkBubble2" type="Sprite2D" parent="TalkBubbleAll"]
-material = SubResource("CanvasItemMaterial_3sfb7")
-position = Vector2(370, 524)
-scale = Vector2(0.200781, 0.253241)
-texture = ExtResource("3_vd43d")
-script = ExtResource("5_ehogi")
-
-[node name="Dialog" type="Label" parent="TalkBubbleAll/TalkBubble2"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1333.86
-offset_top = -658.335
-offset_right = -590.864
-offset_bottom = -437.335
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 70
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Human" type="Sprite2D" parent="TalkBubbleAll/TalkBubble2"]
-visible = false
-position = Vector2(244.047, -146.106)
-scale = Vector2(0.119974, 0.11883)
-texture = ExtResource("7_01653")
-
-[node name="TalkBubble3" type="Sprite2D" parent="TalkBubbleAll"]
 material = SubResource("CanvasItemMaterial_3sfb7")
 position = Vector2(818, 519)
 scale = Vector2(0.201, 0.253)
 texture = ExtResource("3_vd43d")
 flip_h = true
-script = ExtResource("5_ehogi")
 
-[node name="Dialog" type="Label" parent="TalkBubbleAll/TalkBubble3"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1343.08
-offset_top = -625.839
-offset_right = -600.085
-offset_bottom = -404.839
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 70
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Human" type="Sprite2D" parent="TalkBubbleAll/TalkBubble3"]
-visible = false
-position = Vector2(-243.781, -138.34)
-scale = Vector2(0.119843, 0.118943)
-texture = ExtResource("7_01653")
+[node name="TalkBubble3" type="Sprite2D" parent="TalkBubbleAll"]
+material = SubResource("CanvasItemMaterial_3sfb7")
+position = Vector2(370, 524)
+scale = Vector2(0.200781, 0.253241)
+texture = ExtResource("3_vd43d")
 
 [node name="TalkBubble4" type="Sprite2D" parent="TalkBubbleAll"]
 material = SubResource("CanvasItemMaterial_3sfb7")
@@ -214,51 +124,30 @@ position = Vector2(1016.96, 512.62)
 scale = Vector2(0.201, 0.253)
 texture = ExtResource("3_vd43d")
 flip_h = true
+
+[node name="Collision1" type="CollisionShape2D" parent="TalkBubbleAll"]
+position = Vector2(152, 522)
+scale = Vector2(0.200781, 0.253241)
+shape = SubResource("RectangleShape2D_kunti")
 script = ExtResource("5_ehogi")
 
-[node name="Dialog" type="Label" parent="TalkBubbleAll/TalkBubble4"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1337.91
-offset_top = -628.289
-offset_right = -594.911
-offset_bottom = -407.289
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 70
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Collision2" type="CollisionShape2D" parent="TalkBubbleAll"]
+position = Vector2(370, 524)
+scale = Vector2(0.200781, 0.253241)
+shape = SubResource("RectangleShape2D_1xk35")
+script = ExtResource("5_ehogi")
 
-[node name="Human" type="Sprite2D" parent="TalkBubbleAll/TalkBubble4"]
-visible = false
-position = Vector2(-218.706, -132.885)
-scale = Vector2(0.119843, 0.118943)
-texture = ExtResource("7_01653")
+[node name="Collision3" type="CollisionShape2D" parent="TalkBubbleAll"]
+position = Vector2(818, 519)
+scale = Vector2(0.201, 0.253)
+shape = SubResource("RectangleShape2D_7ehpl")
+script = ExtResource("5_ehogi")
 
-[node name="Time" type="Label" parent="."]
-texture_filter = 1
-offset_left = 65.0
-offset_top = 30.0
-offset_right = 223.0
-offset_bottom = 118.0
-theme_override_font_sizes/font_size = 30
-text = "Time: 8:00"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Money" type="Label" parent="."]
-texture_filter = 1
-offset_left = 245.0
-offset_top = 30.0
-offset_right = 403.0
-offset_bottom = 118.0
-theme_override_font_sizes/font_size = 30
-text = "Money: 0€"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Collision4" type="CollisionShape2D" parent="TalkBubbleAll"]
+position = Vector2(1016.96, 512.62)
+scale = Vector2(0.201, 0.253)
+shape = SubResource("RectangleShape2D_gwec2")
+script = ExtResource("5_ehogi")
 
 [connection signal="input_event" from="IngredientBox" to="." method="_ingredient_box_clicked"]
 [connection signal="input_event" from="PotionBox" to="." method="_potion_box_clicked"]

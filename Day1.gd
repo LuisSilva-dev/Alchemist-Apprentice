@@ -16,7 +16,7 @@ to guide me in this first day."
 var step = 0;
 
 func _ready():
-	get_node("Intro").text = intro
+	$Intro.text = intro
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_select"):
