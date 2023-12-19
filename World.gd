@@ -20,9 +20,11 @@ var reqInd
 var timeLabelNode
 var moneyLabelNode
 var money
+var cursorIcon
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	cursorIcon = null
 	hasPotion = false
 	hasIngredient = false
 	isOpen = false
@@ -33,9 +35,15 @@ func _ready():
 	curClientTime = 0.0
 	money = 0
 	timeLabelNode = get_node("Time")
+	moneyLabelNode = get_node("Money")
 	reqInd = 1
 	time = RandomNumberGenerator.new().randf_range(0, maxTime)
-	print("Time: ", time)
+	$IngredientBox/Blue.visible = false
+	$IngredientBox/Red.visible = false
+	$IngredientBox/Green.visible = false
+	$IngredientBox/BlueCollision.disabled = true
+	$IngredientBox/RedCollision.disabled = true
+	$IngredientBox/GreenCollision.disabled = true
 	var n = 1
 	while n <= 4:
 		var coll = "TalkBubbleAll/Collision"+str(n)
@@ -59,14 +67,25 @@ func _process(delta):
 	curTime += delta
 	if(curTime >= timeOfDay):
 		get_tree().change_scene_to_file("res://MenuScreen.tscn")
+
+
+func _input(event):
+	if cursorIcon != null and event is InputEventMouseMotion:
+		cursorIcon.position = event.position
 	
 
 
 func _potion_box_clicked(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and isOpen and !hasIngredient:
-			print("I got the potion from the box")
-			hasPotion = !hasPotion
-			potion = "Nothing"
+		print("I got the potion from the box")
+		hasPotion = !hasPotion
+		potion = "Nothing"
+		if cursorIcon != null:
+			cursorIcon.queue_free()
+			cursorIcon = null
+		else:
+			cursorIcon = load("res://EmptyPotion.tscn").instantiate()
+			add_child(cursorIcon)
 
 
 func _alchemist_setup_clicked(viewport, event, shape_idx):
@@ -76,26 +95,63 @@ func _alchemist_setup_clicked(viewport, event, shape_idx):
 			hasPotion = false
 			potion = "liquid"
 			curTimeFill = 0.01
-			# add a potion to background sprite
+			if cursorIcon != null:
+				cursorIcon.queue_free()
+				cursorIcon = null
 		elif hasIngredient && curTimeFill >= timeFill:
 			print("I clicked the setup with ingredient")
 			hasIngredient = false
 			potion = $Alchemist_Setup.getPotion(potion, handIngredient)
 			curTimeMix = 0.01
+			if cursorIcon != null:
+				cursorIcon.queue_free()
+				cursorIcon = null
 		elif curTimeMix >= timeMix:
 			print("Took out the potion")
 			hasPotion = true
-			# potion in hand
-		
-		
+			potion = $Alchemist_Setup.finishPotion(potion)
+			if potion == "health":
+				cursorIcon = load("res://HealthPotion.tscn").instantiate()
+			elif potion == "mana":
+				cursorIcon = load("res://ManaPotion.tscn").instantiate()
+			elif potion == "stamina":
+				cursorIcon = load("res://StaminaPotion.tscn").instantiate()
+			elif potion == "strenght":
+				cursorIcon = load("res://StrenghtPotion.tscn").instantiate()
+			elif potion == "cure":
+				cursorIcon = load("res://CurePotion.tscn").instantiate()
+			elif potion == "poison":
+				cursorIcon = load("res://PoisonPotion.tscn").instantiate()
+			add_child(cursorIcon)
 
 
 func _ingredient_box_clicked(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and isOpen and !hasPotion:
-		print("I clicked the ingredient box")
-		hasIngredient = !hasIngredient
-		handIngredient = "red"
-		# add ingredient to setup
+		if cursorIcon != null:
+			cursorIcon.queue_free()
+			cursorIcon = null
+		if shape_idx == 0:
+			print("I clicked the ingredient box")
+			$IngredientBox/Blue.visible = !$IngredientBox/Blue.visible
+			$IngredientBox/Red.visible = !$IngredientBox/Red.visible
+			$IngredientBox/Green.visible = !$IngredientBox/Green.visible
+			$IngredientBox/BlueCollision.disabled = !$IngredientBox/BlueCollision.disabled
+			$IngredientBox/RedCollision.disabled = !$IngredientBox/RedCollision.disabled
+			$IngredientBox/GreenCollision.disabled = !$IngredientBox/GreenCollision.disabled
+			hasIngredient = false
+		else:
+			match shape_idx:
+				1:
+					handIngredient = "blue"
+					cursorIcon = load("res://BlueSprite.tscn").instantiate()
+				2:
+					handIngredient = "green"
+					cursorIcon = load("res://GreenSprite.tscn").instantiate()
+				3:
+					handIngredient = "red"
+					cursorIcon = load("res://RedSprite.tscn").instantiate()
+			add_child(cursorIcon)
+			hasIngredient = true
 		
 
 func _open_sign_clicked(viewport, event, shape_idx):
@@ -114,42 +170,25 @@ func _hand_book_clicked(viewport, event, shape_idx):
 
 func _talk_bubble_clicked(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and hasPotion:
-		match shape_idx:
-			0:
-				if $TalkBubbleAll/Collision1.gotProduct(potion):
-					money += 5
-					moneyLabelNode.text = "Money: " + str(money)
-				$TalkBubbleAll/TalkBubble1.visible = false
-				$TalkBubbleAll/Collision1.disabled = true
-				
-			1:
-				if $TalkBubbleAll/Collision2.gotProduct(potion):
-					money += 5
-					moneyLabelNode.text = "Money: " + str(money)
-				$TalkBubbleAll/TalkBubble2.visible = false
-				$TalkBubbleAll/Collision2.disabled = true
-			2:
-				if $TalkBubbleAll/Collision3.gotProduct(potion):
-					money += 5
-					moneyLabelNode.text = "Money: " + str(money)
-				$TalkBubbleAll/TalkBubble3.visible = false
-				$TalkBubbleAll/Collision3.disabled = true
-			3:
-				if $TalkBubbleAll/Collision4.gotProduct(potion):
-					money += 5
-					moneyLabelNode.text = "Money: " + str(money)
-				$TalkBubbleAll/TalkBubble4.visible = false
-				$TalkBubbleAll/Collision4.disabled = true
+		print("shaped idx: ", shape_idx)
+		if get_node("TalkBubbleAll/TalkBubble"+str(shape_idx+1)).gotProduct(potion):
+			money += 5
+			moneyLabelNode.text = "Money: " + str(money)
+		get_node("TalkBubbleAll/TalkBubble"+str(shape_idx+1)).visible = false
+		get_node("TalkBubbleAll/Collision"+str(shape_idx+1)).disabled = true
 		hasPotion = false
 		curTimeFill = 0
 		curTimeMix = 0
-				
+		if cursorIcon != null:
+			cursorIcon.queue_free()
+			cursorIcon = null
+	
+
 func _makeRequests():
 	if get_node("TalkBubbleAll/Collision"+str(reqInd)).disabled:
 		get_node("TalkBubbleAll/TalkBubble"+str(reqInd)).makeRequest()
 		get_node("TalkBubbleAll/Collision"+str(reqInd)).disabled = false
 		get_node("TalkBubbleAll/TalkBubble"+str(reqInd)).visible = true
 		time = RandomNumberGenerator.new().randf_range(0, maxTime)
-		curClientTime = 0.0
-		
 	reqInd = RandomNumberGenerator.new().randi_range(1, 4)
+	curClientTime = 0.0

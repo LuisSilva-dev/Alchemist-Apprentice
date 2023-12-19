@@ -28,5 +28,19 @@ func getPotion(potion, ingredient):
 	print(potion)
 	return potion
 	
+func finishPotion(potion):
+	if potion == "red":
+		return "health"
+	elif potion == "green":
+		return "stamina"
+	elif potion == "blue":
+		return "mana"
+	elif potion == "orange":
+		return "strength"
+	elif potion == "black":
+		return "poison"
+	elif potion == "white":
+		return "cure"
+	
 func getIngredients(index):
 	return ingredients[index]

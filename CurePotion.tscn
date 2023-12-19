@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8t3ou0wptfyc"]
+
+[ext_resource type="Texture2D" uid="uid://cdlhd86jvwwds" path="res://Sprites/CurePotion.png" id="1_2astp"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CurePotion" type="Sprite2D" parent="."]
+texture = ExtResource("1_2astp")

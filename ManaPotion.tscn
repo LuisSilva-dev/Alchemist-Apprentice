@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx3nirmylsbf7"]
+
+[ext_resource type="Texture2D" uid="uid://brfv2ekmoqs2" path="res://Sprites/ManaPotion.png" id="1_pl85f"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ManaPotion" type="Sprite2D" parent="."]
+texture = ExtResource("1_pl85f")

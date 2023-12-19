@@ -21,18 +21,15 @@ func _process(delta):
 func gotProduct(potionName):
 	print("request " + request + " potion: " + potionName)
 	if request == potionName:
-		print(dialog[1])
+		print(dialog[0])
 		return true
 	else:
-		print(dialog[2])
+		print(dialog[1])
 		return false
 	
 func makeRequest():
-	var potion = get_tree().get_root().get_node("World/Alchemist_Setup").getPotions(RandomNumberGenerator.new().randi_range(-1,5))
+	request = get_tree().get_root().get_node("World/Alchemist_Setup").getPotions(RandomNumberGenerator.new().randi_range(0, 5))
 	visible = true
-	request = "I want a " + potion + " potion"
-	print($Dialog)
-	$Dialog.text = request
+	$Dialog.text = "I want a " + request + " potion"
 	$Human.visible = true
-	print("Im here")
 
