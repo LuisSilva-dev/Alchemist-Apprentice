@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://cy1u845aty253"]
+[gd_scene load_steps=2 format=3 uid="uid://cy1u845aty253"]
+
+[ext_resource type="Script" path="res://GameOver.gd" id="1_0782q"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_0782q")
+
+[node name="GameOver" type="Label" parent="."]
+offset_right = 371.0
+offset_bottom = 309.0
+text = "Game Over
+Money:"
+horizontal_alignment = 1
+vertical_alignment = 1
