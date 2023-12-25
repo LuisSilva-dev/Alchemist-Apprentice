@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://crua17eghdfcs"]
+
+[ext_resource type="Texture2D" uid="uid://buqlv8fsrbgtf" path="res://Sprites/PoisonPotionTransition.png" id="1_2n1pg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PoisonPotionTransition" type="Sprite2D" parent="."]
+texture = ExtResource("1_2n1pg")

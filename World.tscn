@@ -1,7 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://c32l1v5euonr1"]
+[gd_scene load_steps=54 format=3 uid="uid://c32l1v5euonr1"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_jxxjf"]
-[ext_resource type="Texture2D" uid="uid://o31v4lngu2d8" path="res://Sprites/Background.png" id="2_gluxr"]
+[ext_resource type="Texture2D" uid="uid://cfjxwkr53xdws" path="res://Sprites/BackgroundFillingSheet.png" id="2_gdwa8"]
 [ext_resource type="Script" path="res://Potions.gd" id="2_gucrc"]
 [ext_resource type="Texture2D" uid="uid://8ypyic7gqm1s" path="res://Sprites/talkBubble.png" id="3_vd43d"]
 [ext_resource type="Texture2D" uid="uid://d21jwwcfikpr1" path="res://Sprites/HandBook.png" id="4_2ff4p"]
@@ -10,20 +10,34 @@
 [ext_resource type="Texture2D" uid="uid://bso4hv2fnw16l" path="res://Sprites/Blue.png" id="8_5iqcv"]
 [ext_resource type="Texture2D" uid="uid://ca8t4qacnoyih" path="res://Sprites/Green.png" id="9_hc4et"]
 [ext_resource type="Texture2D" uid="uid://cyyk3kcr6vhri" path="res://Sprites/Red.png" id="10_13klt"]
+[ext_resource type="Texture2D" uid="uid://doo0tb30vcidu" path="res://Sprites/PotionFillingDatasheet.png" id="11_4d1qc"]
+[ext_resource type="Texture2D" uid="uid://brfv2ekmoqs2" path="res://Sprites/ManaPotion.png" id="12_lnaex"]
+[ext_resource type="Texture2D" uid="uid://cb4eoavkyamuq" path="res://Sprites/HealthPotion.png" id="13_ym27o"]
+[ext_resource type="Texture2D" uid="uid://dphwcs4iro3mc" path="res://Sprites/StaminaPotion.png" id="14_nly71"]
+[ext_resource type="Texture2D" uid="uid://b04mclqdbnhxv" path="res://Sprites/PoisonPotion.png" id="15_0ja2c"]
+[ext_resource type="Texture2D" uid="uid://cdlhd86jvwwds" path="res://Sprites/CurePotion.png" id="16_pnr78"]
+[ext_resource type="Texture2D" uid="uid://hq2bcq6uepl7" path="res://Sprites/StrenghtPotion.png" id="17_7mx6q"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_86hcn"]
-size = Vector2(161, 119)
+[sub_resource type="Animation" id="Animation_tu012"]
+resource_name = "Filling"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1.1, 1.5, 1.9, 2.3, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 2, 1, 2, 0]
+}
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsb7m"]
-size = Vector2(284, 178.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjfhd"]
-size = Vector2(182, 52)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2dkf"]
-size = Vector2(1242.53, 1550)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3sfb7"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cgh00"]
+_data = {
+"Filling": SubResource("Animation_tu012")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kunti"]
 size = Vector2(1006.07, 493.6)
@@ -36,6 +50,8 @@ size = Vector2(915.423, 395.257)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwec2"]
 size = Vector2(985.075, 438.736)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3sfb7"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_f21om"]
 
@@ -51,55 +67,209 @@ radius = 16.0312
 [sub_resource type="CircleShape2D" id="CircleShape2D_e60q6"]
 radius = 17.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2dkf"]
+size = Vector2(1242.53, 1550)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjfhd"]
+size = Vector2(182, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsb7m"]
+size = Vector2(284, 178.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86hcn"]
+size = Vector2(161, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qv30"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(411, 156, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma8xh"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(411, 312, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pngg6"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(0, 0, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8teaq"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(137, 0, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gbkf"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(274, 0, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcemt"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(411, 0, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54soq"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(548, 156, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dijyx"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(548, 312, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74d2i"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(685, 156, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aytqg"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(685, 312, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr0se"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(137, 156, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4srp2"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(137, 312, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pgpq"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(0, 156, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4brn"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(0, 312, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvrei"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(274, 156, 137, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yqbf"]
+atlas = ExtResource("11_4d1qc")
+region = Rect2(274, 312, 137, 156)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7mua"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qv30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma8xh")
+}],
+"loop": false,
+"name": &"CureTrans",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_pngg6")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_8teaq")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_7gbkf")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_tcemt")
+}],
+"loop": false,
+"name": &"Filling",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54soq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dijyx")
+}],
+"loop": false,
+"name": &"HealthTrans",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74d2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aytqg")
+}],
+"loop": false,
+"name": &"ManaTrans",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cr0se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4srp2")
+}],
+"loop": false,
+"name": &"PoisonTrans",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pgpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4brn")
+}],
+"loop": false,
+"name": &"StaminaTrans",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvrei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yqbf")
+}],
+"loop": false,
+"name": &"StrenghtTrans",
+"speed": 1.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7fgi"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_pcgag"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_fia3h"]
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_jxxjf")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
-scale = Vector2(0.915867, 0.636699)
+scale = Vector2(0.249135, 0.186851)
+texture = ExtResource("2_gdwa8")
+hframes = 3
 
-[node name="PotionBox" type="Area2D" parent="."]
-position = Vector2(858, 292)
-
-[node name="Collision" type="CollisionShape2D" parent="PotionBox"]
-shape = SubResource("RectangleShape2D_86hcn")
-
-[node name="Alchemist_Setup" type="Area2D" parent="."]
-position = Vector2(205, 284)
-script = ExtResource("2_gucrc")
-
-[node name="Collision" type="CollisionShape2D" parent="Alchemist_Setup"]
-shape = SubResource("RectangleShape2D_qsb7m")
-
-[node name="OpenSign" type="Area2D" parent="."]
-position = Vector2(568, 87)
-
-[node name="Collision" type="CollisionShape2D" parent="OpenSign"]
-shape = SubResource("RectangleShape2D_bjfhd")
-
-[node name="Sign" type="Label" parent="OpenSign"]
-texture_filter = 1
-offset_left = -91.0
-offset_top = -30.0
-offset_right = 91.0
-offset_bottom = 26.0
-theme_override_font_sizes/font_size = 36
-text = "Closed"
-horizontal_alignment = 1
-
-[node name="HandBook" type="Area2D" parent="."]
-position = Vector2(599, 493)
-rotation = 0.2123
-scale = Vector2(0.073178, 0.0761606)
-
-[node name="Collision" type="CollisionShape2D" parent="HandBook"]
-position = Vector2(167.902, -61.6372)
-shape = SubResource("RectangleShape2D_f2dkf")
-
-[node name="HandBook" type="Sprite2D" parent="HandBook"]
-texture = ExtResource("4_2ff4p")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+libraries = {
+"": SubResource("AnimationLibrary_cgh00")
+}
 
 [node name="TalkBubbleAll" type="Area2D" parent="."]
+
+[node name="Collision1" type="CollisionShape2D" parent="TalkBubbleAll"]
+position = Vector2(152, 522)
+scale = Vector2(0.200781, 0.253241)
+shape = SubResource("RectangleShape2D_kunti")
+
+[node name="Collision2" type="CollisionShape2D" parent="TalkBubbleAll"]
+position = Vector2(370, 524)
+scale = Vector2(0.200781, 0.253241)
+shape = SubResource("RectangleShape2D_1xk35")
+
+[node name="Collision3" type="CollisionShape2D" parent="TalkBubbleAll"]
+position = Vector2(818, 519)
+scale = Vector2(0.201, 0.253)
+shape = SubResource("RectangleShape2D_7ehpl")
+
+[node name="Collision4" type="CollisionShape2D" parent="TalkBubbleAll"]
+position = Vector2(1016.96, 512.62)
+scale = Vector2(0.201, 0.253)
+shape = SubResource("RectangleShape2D_gwec2")
 
 [node name="TalkBubble1" type="Sprite2D" parent="TalkBubbleAll"]
 material = SubResource("CanvasItemMaterial_3sfb7")
@@ -219,54 +389,6 @@ position = Vector2(-218.706, -132.885)
 scale = Vector2(0.119843, 0.118943)
 texture = ExtResource("7_01653")
 
-[node name="Collision1" type="CollisionShape2D" parent="TalkBubbleAll"]
-position = Vector2(152, 522)
-scale = Vector2(0.200781, 0.253241)
-shape = SubResource("RectangleShape2D_kunti")
-
-[node name="Collision2" type="CollisionShape2D" parent="TalkBubbleAll"]
-position = Vector2(370, 524)
-scale = Vector2(0.200781, 0.253241)
-shape = SubResource("RectangleShape2D_1xk35")
-
-[node name="Collision3" type="CollisionShape2D" parent="TalkBubbleAll"]
-position = Vector2(818, 519)
-scale = Vector2(0.201, 0.253)
-shape = SubResource("RectangleShape2D_7ehpl")
-
-[node name="Collision4" type="CollisionShape2D" parent="TalkBubbleAll"]
-position = Vector2(1016.96, 512.62)
-scale = Vector2(0.201, 0.253)
-shape = SubResource("RectangleShape2D_gwec2")
-
-[node name="Time" type="Label" parent="."]
-texture_filter = 1
-offset_left = 65.0
-offset_top = 30.0
-offset_right = 223.0
-offset_bottom = 118.0
-theme_override_font_sizes/font_size = 30
-text = "Time: 8:00"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Money" type="Label" parent="."]
-texture_filter = 1
-offset_left = 245.0
-offset_top = 30.0
-offset_right = 403.0
-offset_bottom = 118.0
-theme_override_font_sizes/font_size = 30
-text = "Money: 0€"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Background" type="Sprite2D" parent="."]
-visibility_layer = 2
-position = Vector2(576, 324)
-scale = Vector2(0.249135, 0.186851)
-texture = ExtResource("2_gluxr")
-
 [node name="IngredientBox" type="Area2D" parent="."]
 light_mask = 2
 visibility_layer = 2
@@ -310,9 +432,422 @@ shape = SubResource("CircleShape2D_74rpb")
 position = Vector2(29, -74)
 shape = SubResource("CircleShape2D_e60q6")
 
-[connection signal="input_event" from="PotionBox" to="." method="_potion_box_clicked"]
-[connection signal="input_event" from="Alchemist_Setup" to="." method="_alchemist_setup_clicked"]
-[connection signal="input_event" from="OpenSign" to="." method="_open_sign_clicked"]
-[connection signal="input_event" from="HandBook" to="." method="_hand_book_clicked"]
+[node name="Money" type="Label" parent="."]
+texture_filter = 1
+offset_left = 245.0
+offset_top = 30.0
+offset_right = 403.0
+offset_bottom = 118.0
+theme_override_font_sizes/font_size = 30
+text = "Money: 0€"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="."]
+texture_filter = 1
+offset_left = 65.0
+offset_top = 30.0
+offset_right = 223.0
+offset_bottom = 118.0
+theme_override_font_sizes/font_size = 30
+text = "Time: 8:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HandBook" type="Area2D" parent="."]
+position = Vector2(599, 493)
+rotation = 0.2123
+scale = Vector2(0.073178, 0.0761606)
+
+[node name="Collision" type="CollisionShape2D" parent="HandBook"]
+position = Vector2(167.902, -61.6372)
+shape = SubResource("RectangleShape2D_f2dkf")
+
+[node name="HandBook" type="Sprite2D" parent="HandBook"]
+texture = ExtResource("4_2ff4p")
+
+[node name="OpenSign" type="Area2D" parent="."]
+position = Vector2(568, 87)
+
+[node name="Collision" type="CollisionShape2D" parent="OpenSign"]
+shape = SubResource("RectangleShape2D_bjfhd")
+
+[node name="Sign" type="Label" parent="OpenSign"]
+texture_filter = 1
+offset_left = -91.0
+offset_top = -30.0
+offset_right = 91.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 36
+text = "Closed"
+horizontal_alignment = 1
+
+[node name="Alchemist_Setup" type="Area2D" parent="."]
+position = Vector2(205, 284)
+script = ExtResource("2_gucrc")
+
+[node name="Collision" type="CollisionShape2D" parent="Alchemist_Setup"]
+shape = SubResource("RectangleShape2D_qsb7m")
+
+[node name="PotionBox" type="Area2D" parent="."]
+position = Vector2(858, 292)
+
+[node name="Collision" type="CollisionShape2D" parent="PotionBox"]
+shape = SubResource("RectangleShape2D_86hcn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.915867, 0.636699)
+
+[node name="PotionFilling" type="AnimatedSprite2D" parent="."]
+position = Vector2(71, 342)
+scale = Vector2(0.370438, 0.370438)
+sprite_frames = SubResource("SpriteFrames_e7mua")
+animation = &"CureTrans"
+
+[node name="Tutorial" type="Node2D" parent="."]
+visible = false
+
+[node name="Alchemy" type="MeshInstance2D" parent="Tutorial"]
+modulate = Color(0.254902, 1, 0.454902, 0.290196)
+material = SubResource("ShaderMaterial_w7fgi")
+position = Vector2(225.5, 282)
+scale = Vector2(321, 180)
+mesh = SubResource("QuadMesh_pcgag")
+
+[node name="Close" type="MeshInstance2D" parent="Tutorial"]
+modulate = Color(0.254902, 1, 0.454902, 0.290196)
+material = SubResource("ShaderMaterial_w7fgi")
+position = Vector2(566.875, 86.25)
+scale = Vector2(178.25, 56.5)
+mesh = SubResource("QuadMesh_pcgag")
+
+[node name="Bubbles" type="MeshInstance2D" parent="Tutorial"]
+modulate = Color(0.254902, 1, 0.454902, 0.290196)
+material = SubResource("ShaderMaterial_w7fgi")
+position = Vector2(590.25, 515)
+scale = Vector2(1091.5, 180)
+mesh = SubResource("QuadMesh_pcgag")
+
+[node name="PotionBox" type="MeshInstance2D" parent="Tutorial"]
+modulate = Color(0.254902, 1, 0.454902, 0.290196)
+material = SubResource("ShaderMaterial_w7fgi")
+position = Vector2(850, 298.5)
+scale = Vector2(180, 109)
+mesh = SubResource("QuadMesh_pcgag")
+
+[node name="IngredientBox" type="MeshInstance2D" parent="Tutorial"]
+modulate = Color(0.254902, 1, 0.454902, 0.290196)
+material = SubResource("ShaderMaterial_w7fgi")
+position = Vector2(1060, 291.5)
+scale = Vector2(158, 109)
+mesh = SubResource("QuadMesh_pcgag")
+
+[node name="Step2" type="Label" parent="Tutorial"]
+offset_left = 38.0
+offset_top = 192.0
+offset_right = 241.0
+offset_bottom = 267.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "2
+Place potion bottle
+*Press left mouse*"
+horizontal_alignment = 1
+
+[node name="Step4" type="Label" parent="Tutorial"]
+offset_left = 36.0
+offset_top = 271.0
+offset_right = 239.0
+offset_bottom = 346.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "4
+Place ingredient
+*Press left mouse*"
+horizontal_alignment = 1
+
+[node name="Step5" type="Label" parent="Tutorial"]
+offset_left = 206.0
+offset_top = 192.0
+offset_right = 409.0
+offset_bottom = 267.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "5
+Take potion
+*Press left mouse*"
+horizontal_alignment = 1
+
+[node name="Step6" type="Label" parent="Tutorial"]
+offset_left = 275.0
+offset_top = 477.0
+offset_right = 478.0
+offset_bottom = 552.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "5
+Take potion and give to clients
+*Press left mouse*"
+horizontal_alignment = 1
+
+[node name="Step3" type="Label" parent="Tutorial"]
+offset_left = 961.0
+offset_top = 246.0
+offset_right = 1164.0
+offset_bottom = 328.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "3
+Get ingredient out
+*Press left mouse*"
+horizontal_alignment = 1
+
+[node name="Step1" type="Label" parent="Tutorial"]
+offset_left = 743.0
+offset_top = 245.0
+offset_right = 946.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1
+Get potion bottle out
+*Press left mouse*"
+horizontal_alignment = 1
+
+[node name="Step0" type="Label" parent="Tutorial"]
+offset_left = 465.0
+offset_top = 37.0
+offset_right = 668.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0
+Open store
+*Press left mouse*"
+horizontal_alignment = 1
+
+[node name="Recipes" type="MeshInstance2D" parent="Tutorial"]
+modulate = Color(0.968627, 0.901961, 0.627451, 1)
+position = Vector2(863, 513)
+scale = Vector2(552, 178)
+mesh = SubResource("QuadMesh_fia3h")
+
+[node name="Blue" type="Sprite2D" parent="Tutorial"]
+position = Vector2(652, 457)
+scale = Vector2(0.61, 0.56)
+texture = ExtResource("8_5iqcv")
+
+[node name="Blue2" type="Sprite2D" parent="Tutorial"]
+position = Vector2(652, 568)
+scale = Vector2(0.61, 0.56)
+texture = ExtResource("8_5iqcv")
+
+[node name="Blue3" type="Sprite2D" parent="Tutorial"]
+position = Vector2(872, 455)
+scale = Vector2(0.61, 0.56)
+texture = ExtResource("8_5iqcv")
+
+[node name="Green" type="Sprite2D" parent="Tutorial"]
+position = Vector2(650, 494)
+scale = Vector2(0.61, 0.56)
+texture = ExtResource("9_hc4et")
+
+[node name="Green2" type="Sprite2D" parent="Tutorial"]
+position = Vector2(712, 568)
+scale = Vector2(0.61, 0.56)
+texture = ExtResource("9_hc4et")
+
+[node name="Green3" type="Sprite2D" parent="Tutorial"]
+position = Vector2(871, 503)
+scale = Vector2(0.61, 0.56)
+texture = ExtResource("9_hc4et")
+
+[node name="Red" type="Sprite2D" parent="Tutorial"]
+position = Vector2(651, 531)
+scale = Vector2(0.61, 0.56)
+texture = ExtResource("10_13klt")
+
+[node name="Red2" type="Sprite2D" parent="Tutorial"]
+position = Vector2(936, 455)
+scale = Vector2(0.61, 0.56)
+texture = ExtResource("10_13klt")
+
+[node name="Red3" type="Sprite2D" parent="Tutorial"]
+position = Vector2(936, 503)
+scale = Vector2(0.61, 0.56)
+texture = ExtResource("10_13klt")
+
+[node name="arrowBlue" type="Label" parent="Tutorial"]
+offset_left = 669.0
+offset_top = 447.0
+offset_right = 702.0
+offset_bottom = 470.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "->"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="plusBlue" type="Label" parent="Tutorial"]
+offset_left = 669.0
+offset_top = 558.0
+offset_right = 702.0
+offset_bottom = 581.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="plusBlue2" type="Label" parent="Tutorial"]
+offset_left = 891.0
+offset_top = 445.0
+offset_right = 924.0
+offset_bottom = 468.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="plusBlue3" type="Label" parent="Tutorial"]
+offset_left = 891.0
+offset_top = 492.0
+offset_right = 924.0
+offset_bottom = 515.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="arrowGreen" type="Label" parent="Tutorial"]
+offset_left = 668.0
+offset_top = 482.0
+offset_right = 701.0
+offset_bottom = 505.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "->"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="arrowGreen2" type="Label" parent="Tutorial"]
+offset_left = 730.0
+offset_top = 558.0
+offset_right = 763.0
+offset_bottom = 581.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "->"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="arrowRed" type="Label" parent="Tutorial"]
+offset_left = 668.0
+offset_top = 519.0
+offset_right = 701.0
+offset_bottom = 542.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "->"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="arrowRed2" type="Label" parent="Tutorial"]
+offset_left = 955.0
+offset_top = 445.0
+offset_right = 988.0
+offset_bottom = 468.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "->"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="arrowRed3" type="Label" parent="Tutorial"]
+offset_left = 955.0
+offset_top = 492.0
+offset_right = 988.0
+offset_bottom = 515.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "->"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="Label" parent="Tutorial"]
+offset_left = 722.0
+offset_top = 513.0
+offset_right = 783.0
+offset_bottom = 546.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "health"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stamina" type="Label" parent="Tutorial"]
+offset_left = 722.0
+offset_top = 476.0
+offset_right = 785.0
+offset_bottom = 509.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "stamina"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mana" type="Label" parent="Tutorial"]
+offset_left = 722.0
+offset_top = 440.0
+offset_right = 785.0
+offset_bottom = 473.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "mana"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Poison" type="Label" parent="Tutorial"]
+offset_left = 785.0
+offset_top = 550.0
+offset_right = 848.0
+offset_bottom = 583.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "poison"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cure" type="Label" parent="Tutorial"]
+offset_left = 998.0
+offset_top = 441.0
+offset_right = 1061.0
+offset_bottom = 474.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "cure"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cure2" type="Label" parent="Tutorial"]
+offset_left = 1008.0
+offset_top = 487.0
+offset_right = 1074.0
+offset_bottom = 520.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "strength"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ManaPotion" type="Sprite2D" parent="Tutorial"]
+position = Vector2(709, 457)
+texture = ExtResource("12_lnaex")
+
+[node name="HealthPotion" type="Sprite2D" parent="Tutorial"]
+position = Vector2(708, 529)
+texture = ExtResource("13_ym27o")
+
+[node name="StaminaPotion" type="Sprite2D" parent="Tutorial"]
+position = Vector2(709, 492)
+texture = ExtResource("14_nly71")
+
+[node name="PoisonPotion" type="Sprite2D" parent="Tutorial"]
+position = Vector2(771, 569)
+texture = ExtResource("15_0ja2c")
+
+[node name="CurePotion" type="Sprite2D" parent="Tutorial"]
+position = Vector2(995, 457)
+texture = ExtResource("16_pnr78")
+
+[node name="StrenghtPotion" type="Sprite2D" parent="Tutorial"]
+position = Vector2(995, 503)
+texture = ExtResource("17_7mx6q")
+
 [connection signal="input_event" from="TalkBubbleAll" to="." method="_talk_bubble_clicked"]
 [connection signal="input_event" from="IngredientBox" to="." method="_ingredient_box_clicked"]
+[connection signal="input_event" from="HandBook" to="." method="_hand_book_clicked"]
+[connection signal="input_event" from="OpenSign" to="." method="_open_sign_clicked"]
+[connection signal="input_event" from="Alchemist_Setup" to="." method="_alchemist_setup_clicked"]
+[connection signal="input_event" from="PotionBox" to="." method="_potion_box_clicked"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://k6as3j7w5ue4"]
+
+[ext_resource type="Texture2D" uid="uid://c8yc5nifeugs6" path="res://Sprites/ManaPotionTransition.png" id="1_xpegr"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ManaPotionTransition" type="Sprite2D" parent="."]
+texture = ExtResource("1_xpegr")

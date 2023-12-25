@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://brurghp5646w7"]
+
+[ext_resource type="Texture2D" uid="uid://q0qxq4mqlkdw" path="res://Sprites/StaminaPotionTransition.png" id="1_6b0nc"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaminaPotionTransition" type="Sprite2D" parent="."]
+texture = ExtResource("1_6b0nc")
